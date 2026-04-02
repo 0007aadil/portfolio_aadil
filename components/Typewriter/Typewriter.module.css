@@ -1,0 +1,30 @@
+.wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+  font-size: clamp(14px, 2vw, 17px);
+  font-weight: 500;
+}
+
+.prefix {
+  color: var(--text-muted);
+  user-select: none;
+}
+
+.text {
+  color: var(--accent-cyan);
+}
+
+.cursor {
+  color: var(--accent-blue);
+  animation: blink 1s step-end infinite;
+  font-size: 1em;
+  line-height: 1;
+  margin-left: 1px;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
