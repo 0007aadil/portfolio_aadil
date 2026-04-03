@@ -12,7 +12,6 @@ const projects = [
     tags: ["Next.js", "React", "Node.js"],
     period: "Delivered Q4 2025",
     image: "/images/Dei.pdf",
-    repoUrl: "https://github.com/0007aadil",
   },
   {
     id: "project-birac",
@@ -22,7 +21,6 @@ const projects = [
     tags: ["Next.js", "React", "Tailwind"],
     period: "Delivered Q1 2026",
     image: "/images/Birac.pdf",
-    repoUrl: "https://github.com/0007aadil",
   },
   {
     id: "project-ciap",
@@ -32,7 +30,6 @@ const projects = [
     tags: ["Next.js", "React", "TypeScript"],
     period: "Delivered Q1 2026",
     image: "/images/ciap.pdf",
-    repoUrl: "https://github.com/0007aadil",
   },
   {
     id: "project-dei-feedback",
@@ -42,7 +39,6 @@ const projects = [
     tags: ["Client Relation", "Delivery"],
     period: "Q4 2025",
     image: "/images/dei_feedback.pdf",
-    repoUrl: "https://github.com/0007aadil",
   },
 ];
 
@@ -122,18 +118,6 @@ export default function Projects() {
                       </span>
                     ))}
                   </div>
-
-                  <a
-                    href={project.repoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.projectLink}
-                  >
-                    View on GitHub
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="14" height="14">
-                      <polyline points="9 18 15 12 9 6" />
-                    </svg>
-                  </a>
                 </div>
               </div>
             ))}

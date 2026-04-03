@@ -46,7 +46,7 @@ export default function Typewriter() {
 
   return (
     <span className={styles.wrapper}>
-      <span className={styles.prefix}>// </span>
+      <span className={styles.prefix}>{"// "}</span>
       <span className={styles.text}>{displayText}</span>
       <span className={styles.cursor} aria-hidden="true">▋</span>
     </span>
