@@ -1,197 +1,123 @@
-.contact {}
-
-.wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 70px;
-  align-items: start;
+.contact {
+  padding-bottom: 120px;
 }
 
-.left {}
-
-.intro {
-  font-size: 15.5px;
-  color: var(--text-secondary);
-  line-height: 1.8;
-  margin-bottom: 40px;
-  max-width: 430px;
-}
-
-.contactItems {
+.container {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 60px;
 }
 
-.contactItem {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 16px 18px;
+.contentWrap {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  text-decoration: none;
-  transition: all 0.25s ease;
-  cursor: pointer;
+  border-radius: var(--radius-xl);
+  padding: 80px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-.contactItem:hover {
-  background: var(--bg-card-hover);
-  border-color: var(--border-glow);
-  transform: translateX(4px);
+.header {
+  max-width: 600px;
+  margin-bottom: 40px;
 }
 
-.cIcon {
-  width: 38px;
-  height: 38px;
-  border-radius: var(--radius-sm);
-  background: rgba(79,142,247,0.1);
-  border: 1px solid rgba(79,142,247,0.15);
+.subtitle {
+  font-size: 20px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-top: 16px;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.primaryBtn {
+  background: var(--text-primary);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 16px 32px;
+  border-radius: var(--radius-full);
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.primaryBtn:hover {
+  opacity: 0.85;
+  transform: scale(0.98);
+}
+
+.secondaryBtn {
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 16px;
+  font-weight: 500;
+  padding: 16px 32px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-subtle);
+  transition: background var(--transition-fast);
+}
+
+.secondaryBtn:hover {
+  background: var(--bg-secondary);
+}
+
+/* Status Indicator */
+.locationWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.statusIndicator {
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: var(--accent-blue);
-  flex-shrink: 0;
+  gap: 10px;
+  background: rgba(34, 197, 94, 0.1);
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
 }
 
-.cLabel {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--text-muted);
+.pulse {
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+  animation: pulse 2s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+
+@keyframes pulse {
+  to {
+    box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
+  }
+}
+
+.statusText {
+  font-size: 13px;
   font-weight: 600;
-  margin-bottom: 3px;
+  color: #16a34a;
 }
 
-.cValue {
+.location {
   font-size: 14px;
   color: var(--text-secondary);
   font-weight: 500;
 }
 
-/* Right column */
-.right {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-/* Certification card */
-.certCard {
-  padding: 26px;
-}
-
-.certHeader {
-  margin-bottom: 14px;
-}
-
-.certBadge {
-  font-size: 12px;
-  font-weight: 600;
-  padding: 5px 12px;
-  border-radius: var(--radius-full);
-  background: rgba(251, 191, 36, 0.1);
-  border: 1px solid rgba(251, 191, 36, 0.2);
-  color: #fbbf24;
-}
-
-.certTitle {
-  font-size: 19px;
-  font-weight: 700;
-  color: var(--text-primary);
-  font-family: var(--font-heading);
-  margin-bottom: 5px;
-}
-
-.certIssuer {
-  font-size: 13px;
-  color: var(--accent-green);
-  font-weight: 500;
-  margin-bottom: 12px;
-}
-
-.certDesc {
-  font-size: 13.5px;
-  color: var(--text-secondary);
-  line-height: 1.7;
-  margin-bottom: 14px;
-}
-
-.certId {
-  font-size: 11px;
-  color: var(--text-muted);
-  font-family: monospace;
-  background: rgba(255,255,255,0.03);
-  padding: 6px 10px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border-subtle);
-  margin-bottom: 16px;
-  word-break: break-all;
-}
-
-.certLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--accent-blue);
-  text-decoration: none;
-  transition: gap 0.2s ease;
-}
-
-.certLink:hover {
-  gap: 10px;
-}
-
-/* CTA Box */
-.ctaBox {
-  background: linear-gradient(135deg, rgba(79,142,247,0.1), rgba(167,139,250,0.1));
-  border: 1px solid rgba(79,142,247,0.2);
-  border-radius: var(--radius-xl);
-  padding: 32px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 18px;
-}
-
-.ctaText {
-  font-size: 16px;
-  color: var(--text-secondary);
-  font-weight: 500;
-}
-
-.ctaBtn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--accent-gradient);
-  color: #fff;
-  font-size: 15px;
-  font-weight: 700;
-  padding: 14px 36px;
-  border-radius: var(--radius-full);
-  text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 24px rgba(79,142,247,0.3);
-  font-family: var(--font-heading);
-  letter-spacing: 0.3px;
-}
-
-.ctaBtn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 36px rgba(79,142,247,0.45);
-}
-
-@media (max-width: 968px) {
-  .wrapper {
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
-  .intro {
-    max-width: 100%;
+/* ===========================
+   RESPONSIVE
+=========================== */
+@media (max-width: 768px) {
+  .contentWrap {
+    padding: 60px 24px;
   }
 }

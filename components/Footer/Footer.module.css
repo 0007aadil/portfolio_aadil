@@ -1,38 +1,28 @@
 .footer {
+  padding: 40px 0;
+  background-color: var(--bg-card);
   border-top: 1px solid var(--border-subtle);
-  padding: 30px 0;
-  position: relative;
-  z-index: 1;
 }
 
 .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 20px;
   flex-wrap: wrap;
-  gap: 16px;
 }
 
 .logo {
-  font-family: var(--font-heading);
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 700;
-}
-
-.logoGrad {
-  background: var(--accent-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.logoDot {
-  color: var(--accent-cyan);
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
 }
 
 .copy {
   font-size: 13px;
-  color: var(--text-muted);
+  color: var(--text-secondary);
+  font-weight: 400;
 }
 
 .links {
@@ -41,19 +31,21 @@
 }
 
 .link {
-  font-size: 13px;
-  color: var(--text-muted);
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: 500;
   text-decoration: none;
-  transition: color 0.2s;
+  transition: color var(--transition-fast);
 }
 
 .link:hover {
-  color: var(--accent-blue);
+  color: var(--text-primary);
 }
 
-@media (max-width: 580px) {
+@media (max-width: 600px) {
   .container {
     flex-direction: column;
     text-align: center;
+    gap: 16px;
   }
 }

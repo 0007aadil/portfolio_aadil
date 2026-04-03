@@ -1,168 +1,108 @@
-.experience {}
-
 .header {
-  margin-bottom: 64px;
+  margin-bottom: 60px;
 }
 
-/* Timeline */
 .timeline {
-  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 32px;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 60px;
+  position: relative;
+  padding-left: 24px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  background: var(--border-subtle);
 }
 
 .timelineItem {
   position: relative;
-  width: calc(50% - 20px);
+  padding-bottom: 48px;
 }
 
-.left {
-  align-self: flex-start;
-  margin-right: auto;
+.timelineItem:last-child {
+  padding-bottom: 0;
 }
 
-.right {
-  align-self: flex-end;
-  margin-left: auto;
-}
-
-/* Center line */
-.line {
+.dot {
   position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  transform: translateX(-50%);
-  background: var(--border-subtle);
-  z-index: 0;
+  left: -28px;
+  top: 8px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--text-primary);
+  border: 4px solid var(--bg-primary);
+  /* creates the gap effect */
+  box-sizing: content-box;
 }
 
-.lineFill {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, var(--accent-blue), var(--accent-purple));
-  border-radius: 2px;
+.content {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 32px;
 }
 
-/* Card */
-.card {
-  padding: 24px;
-  position: relative;
-  z-index: 1;
-}
-
-.cardTop {
+.roleHeader {
   display: flex;
-  align-items: center;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
   gap: 12px;
-  margin-bottom: 14px;
-}
-
-.iconWrap {
-  width: 42px;
-  height: 42px;
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  flex-shrink: 0;
-}
-
-.color_blue   { background: rgba(79, 142, 247, 0.15); border: 1px solid rgba(79, 142, 247, 0.2); }
-.color_purple { background: rgba(167, 139, 250, 0.15); border: 1px solid rgba(167, 139, 250, 0.2); }
-.color_cyan   { background: rgba(34, 211, 238, 0.12); border: 1px solid rgba(34, 211, 238, 0.2); }
-
-.cardMeta {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.typeBadge {
-  font-size: 11px;
-  font-weight: 600;
-  padding: 3px 10px;
-  border-radius: var(--radius-full);
-  width: fit-content;
-}
-
-.badge_blue   { background: rgba(79,142,247,0.1); color: var(--accent-blue); border: 1px solid rgba(79,142,247,0.2); }
-.badge_purple { background: rgba(167,139,250,0.1); color: var(--accent-purple); border: 1px solid rgba(167,139,250,0.2); }
-.badge_cyan   { background: rgba(34,211,238,0.1); color: var(--accent-cyan); border: 1px solid rgba(34,211,238,0.2); }
-
-.period {
-  font-size: 12px;
-  color: var(--text-muted);
+  margin-bottom: 8px;
 }
 
 .role {
-  font-size: 17px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: 4px;
-  font-family: var(--font-heading);
+}
+
+.period {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
 }
 
 .company {
-  font-size: 13.5px;
-  color: var(--accent-blue);
-  font-weight: 500;
-  margin-bottom: 4px;
-}
-
-.location {
-  font-size: 12px;
-  color: var(--text-muted);
-  margin-bottom: 14px;
-}
-
-.description {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text-secondary);
-  line-height: 1.75;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+  font-weight: 400;
 }
 
-.highlights {
+.bullets {
+  list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  list-style: none;
+  gap: 12px;
 }
 
-.highlight {
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-  font-size: 13.5px;
+.bullets li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 15px;
   color: var(--text-secondary);
+  line-height: 1.6;
 }
 
-.bullet {
-  flex-shrink: 0;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--accent-blue);
-  margin-top: 6px;
+.bullets li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--border-subtle);
 }
 
-/* Responsive: stack on mobile */
+/* ===========================
+   RESPONSIVE
+=========================== */
 @media (max-width: 768px) {
-  .timeline {
-    padding: 0;
-  }
-  .timelineItem {
-    width: 100%;
-    margin: 0;
-  }
-  .line {
-    display: none;
+  .content {
+    padding: 24px;
   }
 }
