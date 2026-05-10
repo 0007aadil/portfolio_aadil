@@ -46,13 +46,16 @@ export default function About() {
             <ScrollReveal delay={0.2}>
               <div className={styles.textContent}>
                 <p className={styles.paragraph}>
-                  I am a Software Engineer specializing in full-stack architecture and native iOS development. My focus is on building enterprise-grade tools that solve complex business problems with elegant code and intuitive user experiences.
+                  I&apos;m Aadil Ahsan — a full-stack and iOS developer building enterprise-grade software with clean architecture and sharp user experiences.
                 </p>
                 <p className={styles.paragraph}>
-                  Operating out of Delhi NCR, I partner with organizations to deliver everything from institutional digital platforms to highly optimized mobile applications. I believe that exceptional engineering is invisible—users only feel the speed, reliability, and polish of the final product.
+                  Currently pursuing my B.Tech in Computer Science (Networking) at SRM IST, Kattankulathur, I&apos;ve shipped real-world products across the stack — from Next.js web platforms at SRM&apos;s Directorate of Entrepreneurship and Innovation to native iOS applications during my internship at Infosys, Mysore.
                 </p>
                 <p className={styles.paragraph}>
-                  When I&apos;m not writing Swift or tweaking Next.js infrastructures, I&apos;m analyzing system designs, exploring new cloud optimizations, or contributing to the software community.
+                  I sit at the intersection of backend performance, frontend craft, and mobile development. I care about code that scales quietly — the kind users never notice because everything just works. Whether architecting a portal in Next.js + MongoDB or refining UIKit components in Swift, I hold the same standard: clean, maintainable, production-ready.
+                </p>
+                <p className={styles.paragraph}>
+                  When I&apos;m not pushing commits, I&apos;m deep in system design trade-offs, exploring cloud optimizations, or contributing to the dev community. Open to placements and remote opportunities.
                 </p>
               </div>
             </ScrollReveal>
