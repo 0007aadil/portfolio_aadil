@@ -1,37 +1,44 @@
 "use client";
+import { useState } from "react";
+import ScrollReveal from "@/components/ScrollReveal/ScrollReveal";
+import ContactForm from "@/components/ContactForm/ContactForm";
 import styles from "./Contact.module.css";
 
 export default function Contact() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <section className={`section ${styles.contact}`} id="contact">
+      <div className={styles.glow} />
       <div className={`container ${styles.container}`}>
+        <ScrollReveal>
+          <div className="section-label">
+            <span>08</span> Let&apos;s Build
+          </div>
+        </ScrollReveal>
 
-        <div className={styles.contentWrap}>
-          <div className={styles.header}>
-            <h2 className="section-title">Let&apos;s build together.</h2>
+        <div className={styles.content}>
+          <ScrollReveal delay={0.1}>
+            <h2 className={styles.massiveText}>
+              <button onClick={() => setIsModalOpen(true)} className={styles.emailLink}>
+                LET&apos;S WORK
+                <br />
+                TOGETHER.
+              </button>
+            </h2>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.2} className={styles.footerRow}>
             <p className={styles.subtitle}>
-              Whether you need to scale an institutional platform, design a native iOS app, or build a secure funding portal, I have the engineering expertise to execute it flawlessly.
+              Ready to scale an institutional platform or design a native iOS app? Let&apos;s talk.
             </p>
-          </div>
-
-          <div className={styles.actions}>
-            <a href="mailto:aadilahsan007@gmail.com" className={styles.primaryBtn} id="contact-email-btn">
-              Email Me directly
-            </a>
-            <a
-              href="https://www.linkedin.com/in/aadilahsan0007/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.secondaryBtn}
-            >
-              Connect on LinkedIn
-            </a>
-          </div>
+            <button onClick={() => setIsModalOpen(true)} className={styles.btn}>
+              Email Me Directly ↗
+            </button>
+          </ScrollReveal>
         </div>
-
-
-
       </div>
+      <ContactForm isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 }
