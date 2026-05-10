@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./Navbar.module.css";
+import ContactForm from "@/components/ContactForm/ContactForm";
 
 const navLinks = [
   { href: "#home", label: "Home", num: "01" },
@@ -17,6 +18,7 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isContactOpen, setIsContactOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
@@ -108,13 +110,18 @@ export default function Navbar() {
                 <div className={styles.overlaySocials}>
                   <a href="https://github.com/0007aadil" target="_blank" rel="noopener noreferrer">GitHub</a>
                   <a href="https://www.linkedin.com/in/aadilahsan0007/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                  <a href="mailto:aadilahsan007@gmail.com">Email</a>
+                  <button onClick={() => setIsContactOpen(true)}>Email</button>
                 </div>
               </motion.div>
             </nav>
           </motion.div>
         )}
       </AnimatePresence>
+
+      <ContactForm 
+        isOpen={isContactOpen} 
+        onClose={() => setIsContactOpen(false)} 
+      />
     </>
   );
 }

@@ -184,16 +184,22 @@
   gap: 24px;
 }
 
-.overlaySocials a {
+.overlaySocials a,
+.overlaySocials button {
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--text-secondary);
   transition: color 0.3s;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 }
 
-.overlaySocials a:hover {
+.overlaySocials a:hover,
+.overlaySocials button:hover {
   color: var(--text-bright);
 }
 
