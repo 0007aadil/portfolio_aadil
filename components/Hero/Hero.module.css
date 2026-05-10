@@ -1,183 +1,244 @@
 .hero {
+  position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: 160px 0 80px;
-  background-color: var(--bg-primary);
-  position: relative;
   overflow: hidden;
+  background-color: var(--bg-primary);
+  z-index: 1;
+}
+
+.backgroundGlow {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 60vw;
+  height: 60vw;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, var(--accent-glow) 0%, rgba(0, 0, 0, 0) 70%);
+  border-radius: 50%;
+  filter: blur(100px);
+  z-index: -1;
+  pointer-events: none;
 }
 
 .container {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 80px;
-  align-items: center;
-}
-
-/* ===========================
-   MASSIVE IMAGE COLUMN
-=========================== */
-.imageColumn {
   position: relative;
-  width: 100%;
-  animation: slideInLeft 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  opacity: 0;
-}
-
-.imageWrap {
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  position: relative;
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  box-shadow: 0 40px 80px rgba(0,0,0,0.1);
-  z-index: 2;
-  border: 1px solid rgba(0,0,0,0.05);
-}
-
-.profileImg {
-  object-fit: cover;
-  object-position: center top;
-}
-
-.glowDecor {
-  position: absolute;
-  top: -30px;
-  left: -30px;
-  width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, var(--color-magenta, #ff2e93), var(--color-orange, #ff8a00));
-  border-radius: var(--radius-xl);
-  z-index: 1;
-  filter: blur(50px);
-  opacity: 0.15;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  z-index: 2;
 }
 
-/* ===========================
-   TEXT COLUMN
-=========================== */
-.textColumn {
+.content {
   display: flex;
   flex-direction: column;
-  gap: 28px;
-  animation: slideInRight 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.2s;
-  opacity: 0;
+  align-items: flex-start;
+  margin-top: -10vh; /* slightly off-center vertically */
 }
 
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 16px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-full);
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-secondary);
-  width: max-content;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+.title {
+  font-family: var(--font-heading);
+  font-size: var(--text-display);
+  font-weight: 700;
+  line-height: 0.9;
+  text-transform: uppercase;
+  color: var(--text-bright);
+  letter-spacing: -0.05em;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
 }
 
-.pulse {
-  width: 8px;
-  height: 8px;
-  background: #22c55e;
-  border-radius: 50%;
-  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
-  animation: pulseAnim 2s infinite cubic-bezier(0.66, 0, 0, 1);
-}
-
-@keyframes pulseAnim {
-  to { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
-}
-
-.heading {
-  font-size: clamp(56px, 7vw, 92px);
-  font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.04em;
-  color: var(--text-primary);
-}
-
-.role {
-  color: var(--text-secondary);
-  background: linear-gradient(135deg, var(--text-primary), var(--text-muted));
+.titleLine {
+  display: block;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.7) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  will-change: transform, opacity;
 }
 
-.description {
-  font-size: clamp(18px, 2.5vw, 22px);
+.subtitleWrapper {
+  max-width: 600px;
+  border-left: 2px solid var(--accent);
+  padding-left: 24px;
+}
+
+.subtitle {
+  font-family: var(--font-mono);
+  font-size: clamp(14px, 1.5vw, 16px);
   color: var(--text-secondary);
   line-height: 1.6;
-  max-width: 600px;
+  letter-spacing: 0.05em;
 }
 
-/* ===========================
-   CTAS
-=========================== */
-.ctas {
+.scrollIndicator {
+  position: absolute;
+  bottom: 40px;
+  left: var(--container-padding);
   display: flex;
-  margin-top: 10px;
-}
-
-.primaryBtn {
-  display: inline-flex;
   align-items: center;
-  gap: 12px;
-  background: var(--text-primary);
-  color: #fff;
-  font-size: 16px;
-  font-weight: 600;
-  padding: 18px 36px;
-  border-radius: var(--radius-full);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  gap: 16px;
+  color: var(--text-secondary);
 }
 
-.primaryBtn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(11, 17, 32, 0.15);
+.mouse {
+  width: 20px;
+  height: 32px;
+  border: 1.5px solid var(--text-secondary);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  padding-top: 6px;
 }
 
-/* ===========================
-   ANIMATIONS
-=========================== */
-@keyframes slideInLeft {
-  from { opacity: 0; transform: translateX(-40px); }
-  to   { opacity: 1; transform: translateX(0); }
+.wheel {
+  width: 4px;
+  height: 6px;
+  background-color: var(--accent);
+  border-radius: 2px;
+  animation: scrollWheel 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
 }
 
-@keyframes slideInRight {
-  from { opacity: 0; transform: translateX(40px); }
-  to   { opacity: 1; transform: translateX(0); }
+.scrollText {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
 }
 
-/* ===========================
-   RESPONSIVE
-=========================== */
-@media (max-width: 968px) {
-  .hero {
-    padding-top: 120px;
-  }
+@keyframes scrollWheel {
+  0% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(8px); opacity: 0; }
+  51% { transform: translateY(-8px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@media (max-width: 768px) {
   .container {
     grid-template-columns: 1fr;
-    gap: 48px;
     text-align: center;
   }
+
+  .content {
+    align-items: center;
+    margin-top: 0;
+    padding-top: 15vh;
+  }
+
+  .title {
+    margin-bottom: 24px;
+    align-items: center;
+  }
   
-  .imageColumn {
-    max-width: 400px;
-    margin: 0 auto;
-    order: -1; /* Keep it at top */
+  .subtitleWrapper {
+    padding-left: 0;
+    border-left: none;
+    max-width: 100%;
   }
 
-  .badge {
-    margin: 0 auto;
+  .animationWrapper {
+    margin-top: 20px;
+    transform: scale(0.6);
   }
 
-  .ctas {
-    justify-content: center;
+  .scrollIndicator {
+    display: none; /* Hide on mobile to save space */
   }
+}
+
+/* ── Abstract Animation Styles ── */
+.animationWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -10vh;
+}
+
+.abstractScene {
+  position: relative;
+  width: 360px;
+  height: 360px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.glowOrb {
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  background: radial-gradient(circle at center, var(--accent) 0%, rgba(45, 212, 191, 0) 70%);
+  border-radius: 50%;
+  filter: blur(40px);
+  z-index: 1;
+}
+
+.shape1 {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 30%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 100%);
+  z-index: 2;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.shape2 {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border: 1px dashed rgba(45, 212, 191, 0.3);
+  border-radius: 50%;
+  z-index: 3;
+}
+
+.glassCard {
+  position: absolute;
+  width: 200px;
+  height: 120px;
+  background: rgba(20, 20, 20, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  z-index: 4;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px;
+  gap: 12px;
+}
+
+.codeLines {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.line {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.line:first-child {
+  background: var(--accent);
+  opacity: 0.8;
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .abstractScene {
+    width: 280px;
+    height: 280px;
+  }
+  
+  .shape1 { width: 220px; height: 220px; }
+  .shape2 { width: 180px; height: 180px; }
+  .glassCard { width: 160px; height: 100px; }
 }

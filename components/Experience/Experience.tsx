@@ -1,4 +1,5 @@
 "use client";
+import ScrollReveal from "@/components/ScrollReveal/ScrollReveal";
 import styles from "./Experience.module.css";
 
 const experiences = [
@@ -36,28 +37,34 @@ export default function Experience() {
   return (
     <section className={`section ${styles.experience}`} id="experience">
       <div className={`container ${styles.container}`}>
-        <div className={styles.header}>
-          <p className="section-label">Career</p>
-          <h2 className="section-title">Professional Experience.</h2>
-        </div>
+        <ScrollReveal>
+          <div className="section-label">
+            <span>03</span> Career
+          </div>
+          <h2 className="section-title">PROFESSIONAL TIMELINE.</h2>
+        </ScrollReveal>
 
         <div className={styles.timeline}>
           {experiences.map((exp, i) => (
-            <div key={i} className={styles.timelineItem}>
-              <div className={styles.dot}></div>
-              <div className={styles.content}>
-                <div className={styles.roleHeader}>
-                  <h3 className={styles.role}>{exp.role}</h3>
+            <ScrollReveal key={i} delay={i * 0.1}>
+              <div className={styles.timelineItem}>
+                <div className={styles.metaInfo}>
                   <span className={styles.period}>{exp.period}</span>
+                  <h4 className={styles.company}>{exp.company}</h4>
                 </div>
-                <h4 className={styles.company}>{exp.company}</h4>
-                <ul className={styles.bullets}>
-                  {exp.description.map((bullet, j) => (
-                    <li key={j}>{bullet}</li>
-                  ))}
-                </ul>
+                
+                <div className={styles.contentInfo}>
+                  <h3 className={styles.role}>{exp.role}</h3>
+                  <div className={styles.descriptionWrapper}>
+                    <ul className={styles.bullets}>
+                      {exp.description.map((bullet, j) => (
+                        <li key={j}>{bullet}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>

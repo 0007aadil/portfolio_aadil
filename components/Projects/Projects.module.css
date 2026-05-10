@@ -1,184 +1,214 @@
-.header {
-  margin-bottom: 60px;
+.projects {
+  background-color: var(--bg-primary);
+  border-top: 1px solid var(--border-subtle);
+  overflow: hidden;
+  padding-bottom: 0;
 }
 
-/* ========================
-   GRID
-======================== */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 32px;
+.container {
+  margin-bottom: 40px;
 }
 
-/* ========================
-   CARD
-======================== */
-.card {
+.categoryHeader {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 40px var(--container-padding) 20px;
+}
+
+.categoryTitle {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.categoryTitle::after {
+  content: '';
+  flex-grow: 1;
+  height: 1px;
+  background: var(--border-subtle);
+}
+
+.projectsList {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  background: var(--bg-card);
+  border-top: 1px solid var(--border-subtle);
 }
 
-/* ========================
-   IMAGE PREVIEW
-======================== */
-.imageWrap {
+.lastList {
+  margin-bottom: 0;
+}
+
+.projectRow {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
+  padding: 80px 0;
   border-bottom: 1px solid var(--border-subtle);
-  background: var(--bg-secondary);
-}
-
-.clickable {
-  cursor: pointer;
-}
-
-/* PDF Live Thumbnail */
-.pdfThumbnailWrap {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  inset: 0;
+  cursor: none;
   overflow: hidden;
-  background: #ffffff;
 }
 
-.pdfThumbnail {
-  width: 100%;
-  height: 100%;
-  border: none;
-  pointer-events: none;
-  user-select: none;
-  transform: scale(1.02);
-  transform-origin: top center;
-  scrollbar-width: none;
-  transition: transform var(--transition-smooth);
-}
-
-.pdfThumbnail::-webkit-scrollbar {
-  display: none;
-}
-
-.clickable:hover .pdfThumbnail {
-  transform: scale(1.05);
-  /* Slight zoom on card hover */
-}
-
-/* Hover hint overlay */
-.hoverHint {
+.rowBackground {
   position: absolute;
   inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.4);
-  /* Light overlay */
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
-  color: #111;
-  font-size: 14px;
-  font-weight: 600;
+  z-index: 0;
   opacity: 0;
-  transition: opacity var(--transition-fast);
+  transform: scale(1.05);
+  transition: opacity 0.6s var(--ease-out-expo), transform 0.6s var(--ease-out-expo);
 }
 
-.clickable:hover .hoverHint {
+.projectRow:hover .rowBackground {
   opacity: 1;
+  transform: scale(1);
 }
 
-/* Placeholder */
-.imagePlaceholder {
-  width: 100%;
-  height: 100%;
+.bgImage {
+  object-fit: cover;
+  filter: grayscale(80%) brightness(0.6);
+}
+
+.bgOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(10,10,10,0.9) 0%, rgba(10,10,10,0.5) 100%);
+}
+
+.rowContent {
+  position: relative;
+  z-index: 1;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--container-padding);
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
+  gap: 40px;
+  transform: translateX(0);
+  transition: transform 0.6s var(--ease-out-expo);
 }
 
-.placeholderText {
-  font-size: 13px;
-  color: var(--text-secondary);
+.projectRow:hover .rowContent {
+  transform: translateX(20px);
 }
 
-/* ========================
-   CARD BODY
-======================== */
-.cardBody {
-  padding: 24px;
+.rowMeta {
   display: flex;
   flex-direction: column;
-  flex: 1;
+  gap: 8px;
+  width: 15%;
 }
 
-.cardTop {
-  margin-bottom: 12px;
+.projectNum {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--accent);
 }
 
-.period {
+.projectPeriod {
+  font-family: var(--font-mono);
   font-size: 11px;
   color: var(--text-secondary);
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-weight: 600;
 }
 
-.title {
-  font-size: 20px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  color: var(--text-primary);
-  margin-bottom: 8px;
-  line-height: 1.25;
+.rowMain {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.description {
-  font-size: 15px;
+.projectTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 4vw, 64px);
+  color: var(--text-bright);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  transition: color 0.4s;
+}
+
+.projectDesc {
+  font-size: 16px;
   color: var(--text-secondary);
-  line-height: 1.5;
-  margin-bottom: 24px;
-  flex: 1;
+  line-height: 1.6;
+  max-width: 600px;
 }
 
 .tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 24px;
+  gap: 12px;
+  margin-top: 16px;
 }
 
 .tag {
-  font-size: 12px;
-  font-weight: 500;
-  background: var(--bg-secondary);
-  color: var(--text-primary);
-  padding: 5px 12px;
-  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 6px 12px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: border-color 0.4s, color 0.4s;
 }
 
-/* Link */
-.projectLink {
-  display: inline-flex;
+.projectRow:hover .tag {
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--text-secondary);
+}
+
+.rowAction {
+  width: 15%;
+  display: flex;
   align-items: center;
-  gap: 4px;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--accent-primary);
-  transition: opacity var(--transition-fast);
+  justify-content: flex-end;
+  gap: 16px;
+  color: var(--text-secondary);
+  transition: color 0.4s, transform 0.4s;
 }
 
-.projectLink:hover {
-  opacity: 0.7;
+.actionText {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: opacity 0.4s, transform 0.4s;
 }
 
-/* ========================
-   RESPONSIVE
-======================== */
-@media (max-width: 600px) {
-  .grid {
-    grid-template-columns: 1fr;
+.projectRow:hover .rowAction {
+  color: var(--accent);
+  transform: translateX(10px);
+}
+
+.projectRow:hover .actionText {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (max-width: 1024px) {
+  .rowContent {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .rowMeta, .rowMain, .rowAction {
+    width: 100%;
+  }
+
+  .rowAction {
+    justify-content: flex-start;
+    margin-top: 24px;
+  }
+
+  .projectRow:hover .rowContent {
+    transform: translateX(0);
   }
 }
