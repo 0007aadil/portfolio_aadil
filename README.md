@@ -2,11 +2,11 @@
 
 A dynamic, high-performance portfolio showcasing my software engineering projects, technical skills, and professional journey. Built with a focus on modern aesthetics, fluid animations, and scalable architecture.
 
-## 🚀 Live Demo
+## Live Demo
 
 [Visit my Portfolio](#) <!-- Replace with live link -->
 
-## ✨ Key Features
+## Key Features
 
 - **Modern UI/UX**: Custom Framer Motion animations, glassmorphism, and a sleek dark theme.
 - **Dynamic Project Details**: Deep dive into individual projects with dedicated, responsive routing.
@@ -15,14 +15,14 @@ A dynamic, high-performance portfolio showcasing my software engineering project
 - **Custom Cursor & Smooth Scrolling**: Providing a premium, "app-like" navigational experience.
 - **Responsive Design**: Flawless layout across Desktop, iPad, and Mobile devices.
 
-## 🛠 Tech Stack
+## Tech Stack
 
 - **Framework**: [Next.js](https://nextjs.org/) (React 18)
 - **Styling**: Vanilla CSS Modules (Variables, Flexbox, CSS Grid)
 - **Animations**: [Framer Motion](https://www.framer.com/motion/)
 - **Form Handling**: [Web3Forms API](https://web3forms.com/)
 
-## 📦 Local Development
+## Local Development
 
 To run this project locally, follow these steps:
 
@@ -50,7 +50,7 @@ To run this project locally, follow these steps:
 
 5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## 📂 Project Structure
+## Project Structure
 
 ```text
 ├── app/                  # Next.js 13+ App Router (Global layouts & routes)
@@ -64,6 +64,6 @@ To run this project locally, follow these steps:
 └── public/               # Static assets (Images, Certificates)
 ```
 
-## 📜 License
+## License
 
 This project is open-source and available under the [MIT License](LICENSE).
