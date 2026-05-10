@@ -54,9 +54,6 @@ export default function About() {
                 <p className={styles.paragraph}>
                   I sit at the intersection of backend performance, frontend craft, and mobile development. I care about code that scales quietly — the kind users never notice because everything just works. Whether architecting a portal in Next.js + MongoDB or refining UIKit components in Swift, I hold the same standard: clean, maintainable, production-ready.
                 </p>
-                <p className={styles.paragraph}>
-                  When I&apos;m not pushing commits, I&apos;m deep in system design trade-offs, exploring cloud optimizations, or contributing to the dev community. Open to placements and remote opportunities.
-                </p>
               </div>
             </ScrollReveal>
 
