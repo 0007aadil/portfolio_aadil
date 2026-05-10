@@ -38,8 +38,10 @@ To run this project locally, follow these steps:
    ```
 
 3. **Set up Environment Variables**
-   Create a `.env.local` file in the root directory and add your Web3Forms access key:
+   Create a `.env.local` file in the root directory and add your Web3Forms access key. The project supports multiple key names, including `key` (ideal for Vercel) or `NEXT_PUBLIC_WEB3FORMS_KEY`:
    ```env
+   key=your_access_key_here
+   # OR
    NEXT_PUBLIC_WEB3FORMS_KEY=your_access_key_here
    ```
 
