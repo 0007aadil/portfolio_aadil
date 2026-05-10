@@ -1,53 +1,61 @@
-.header {
+.skills {
+  background-color: var(--bg-primary);
+  padding: var(--section-padding) 0;
+  border-top: 1px solid var(--border-subtle);
+  overflow: hidden;
+}
+
+.container {
   margin-bottom: 60px;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-}
-
-.categoryCard {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  padding: 32px;
-}
-
-.catTitle {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 20px;
-}
-
-.tagList {
+.marqueesContainer {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  flex-direction: column;
+  gap: 20px;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
 }
 
-.tag {
-  font-size: 14px;
-  font-weight: 500;
-  background: var(--bg-secondary);
-  color: var(--text-secondary);
-  padding: 8px 16px;
-  border-radius: var(--radius-sm);
-  transition: color var(--transition-fast), background var(--transition-fast);
+.marqueeWrapper {
+  display: flex;
+  align-items: center;
+  background-color: var(--bg-card);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  transition: background-color 0.4s;
 }
 
-.tag:hover {
-  background: var(--text-primary);
-  color: #fff;
+.marqueeWrapper:hover {
+  background-color: var(--bg-card-hover);
 }
 
-/* ===========================
-   RESPONSIVE
-=========================== */
+.marqueeWrapper:hover .marqueeLabel {
+  color: var(--accent);
+}
+
+.marqueeLabel {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 30px;
+  min-width: 150px;
+  border-right: 1px solid var(--border-subtle);
+  transition: color 0.3s;
+}
+
 @media (max-width: 768px) {
-  .grid {
-    grid-template-columns: 1fr;
+  .marqueeWrapper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .marqueeLabel {
+    padding: 15px 24px;
+    min-width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--border-subtle);
   }
 }
