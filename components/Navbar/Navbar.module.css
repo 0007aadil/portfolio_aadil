@@ -1,19 +1,22 @@
+/* ===========================
+   NAVBAR — Active Theory Style
+=========================== */
 .header {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  right: 0;
   z-index: 1000;
-  transition: background-color 0.4s ease, border-bottom 0.4s ease, padding 0.4s ease;
-  padding: 24px 0;
+  padding: 20px 0;
+  transition: background 0.4s, backdrop-filter 0.4s, padding 0.4s;
 }
 
-.scrolled {
-  background-color: rgba(255, 255, 255, 0.85);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  padding: 16px 0;
+.header.scrolled {
+  padding: 14px 0;
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .navContainer {
@@ -22,52 +25,199 @@
   justify-content: space-between;
 }
 
+/* ── Logo ── */
 .logo {
-  font-weight: 600;
-  font-size: 19px;
-  letter-spacing: -0.02em;
-  color: var(--text-primary);
-  text-decoration: none;
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--text-bright);
+  z-index: 1001;
+  transition: opacity 0.3s;
 }
 
-.nav {
-  display: none;
+.logo:hover {
+  opacity: 0.7;
 }
 
-.navList {
+.logoDot {
+  color: var(--accent);
+}
+
+/* ── Hamburger ── */
+.hamburger {
+  position: relative;
+  width: 36px;
+  height: 24px;
+  background: none;
+  border: none;
+  z-index: 1001;
   display: flex;
-  gap: 32px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 8px;
+  padding: 0;
+}
+
+.bar {
+  display: block;
+  height: 1.5px;
+  background: var(--text-bright);
+  border-radius: 2px;
+  transition: all 0.4s var(--ease-out-expo);
+}
+
+.bar:first-child {
+  width: 36px;
+}
+
+.bar:last-child {
+  width: 24px;
+}
+
+.hamburger:hover .bar:last-child {
+  width: 36px;
+}
+
+/* Active state — morph to X */
+.hamburger.active .bar:first-child {
+  transform: rotate(45deg) translate(3px, 3px);
+  width: 28px;
+}
+
+.hamburger.active .bar:last-child {
+  transform: rotate(-45deg) translate(3px, -3px);
+  width: 28px;
+}
+
+/* ===========================
+   FULL-SCREEN OVERLAY
+=========================== */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: #0a0a0a;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.overlayNav {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 100px var(--container-padding) 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+}
+
+.overlayList {
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.navLink {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text-secondary);
-  transition: color var(--transition-fast);
+.overlayLink {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-subtle);
+  transition: all 0.3s var(--ease-out-expo);
 }
 
-.navLink:hover {
-  color: var(--text-primary);
+.overlayLink:hover {
+  padding-left: 20px;
+  border-color: var(--accent);
 }
 
-.resumeBtn {
-  font-size: 13px;
+.linkNum {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  min-width: 30px;
+}
+
+.linkText {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 5vw, 64px);
   font-weight: 600;
-  background-color: var(--text-primary);
-  color: #fff;
-  padding: 8px 16px;
-  border-radius: var(--radius-full);
-  transition: opacity var(--transition-fast);
+  letter-spacing: -0.04em;
+  color: var(--text-bright);
+  transition: color 0.3s;
 }
 
-.resumeBtn:hover {
-  opacity: 0.8;
+.overlayLink:hover .linkText {
+  color: var(--accent);
 }
 
-/* For simplicity in the minimal design, we show the nav on desktop */
-@media (min-width: 768px) {
-  .nav {
-    display: block;
+/* Overlay footer */
+.overlayFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 40px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.overlayResume {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  transition: opacity 0.3s;
+}
+
+.overlayResume:hover {
+  opacity: 0.7;
+}
+
+.overlaySocials {
+  display: flex;
+  gap: 24px;
+}
+
+.overlaySocials a {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  transition: color 0.3s;
+}
+
+.overlaySocials a:hover {
+  color: var(--text-bright);
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+@media (max-width: 768px) {
+  .overlayNav {
+    padding-top: 80px;
+    padding-bottom: 40px;
+    gap: 30px;
+  }
+
+  .linkText {
+    font-size: clamp(24px, 7vw, 40px);
+  }
+
+  .overlayLink {
+    padding: 8px 0;
+  }
+
+  .overlayFooter {
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
   }
 }
