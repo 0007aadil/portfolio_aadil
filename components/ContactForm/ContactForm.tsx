@@ -31,7 +31,6 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
     const formData = new FormData(form);
 
     const payload = {
-      access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "",
       name: formData.get("name") as string,
       email: formData.get("email") as string,
       message: formData.get("message") as string,
@@ -39,7 +38,7 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
     };
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
