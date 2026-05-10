@@ -1,52 +1,64 @@
-/* Inner dot — snaps to position instantly */
 .dot {
   position: fixed;
   top: 0;
   left: 0;
+  width: 6px;
+  height: 6px;
+  background: #ffffff;
+  border-radius: 50%;
   pointer-events: none;
   z-index: 99999;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #4f8ef7;
-  box-shadow: 0 0 10px #4f8ef7, 0 0 20px rgba(79,142,247,0.5);
-  margin-left: -4px;
-  margin-top: -4px;
-  transition: transform 0.05s ease, width 0.2s ease, height 0.2s ease, background 0.2s ease;
+  mix-blend-mode: difference;
+  transition: width 0.3s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)),
+              height 0.3s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)),
+              background 0.3s;
   will-change: transform;
 }
 
-/* Outer ring — spring-lags behind */
 .ring {
   position: fixed;
   top: 0;
   left: 0;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
   pointer-events: none;
   z-index: 99998;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(79,142,247,0.5);
-  margin-left: -17px;
-  margin-top: -17px;
+  mix-blend-mode: difference;
+  transition: width 0.4s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)),
+              height 0.4s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)),
+              border-color 0.3s,
+              background 0.3s;
   will-change: transform;
-  transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease;
 }
 
-/* Hover state — expands the ring, hides the dot */
+/* Hover state */
 .dot.hover {
-  width: 14px;
-  height: 14px;
-  background: var(--accent-purple);
-  box-shadow: 0 0 12px var(--accent-purple), 0 0 30px rgba(167,139,250,0.4);
-  margin-left: -7px;
-  margin-top: -7px;
+  width: 12px;
+  height: 12px;
+  background: var(--accent, #64ffda);
 }
 
 .ring.hover {
-  width: 50px;
-  height: 50px;
-  margin-left: -25px;
-  margin-top: -25px;
-  border-color: rgba(167, 139, 250, 0.6);
+  width: 60px;
+  height: 60px;
+  border-color: var(--accent, #64ffda);
+  background: rgba(100, 255, 218, 0.05);
+  box-shadow: 0 0 30px rgba(100, 255, 218, 0.15);
+}
+
+/* Hide on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .dot,
+  .ring {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .dot,
+  .ring {
+    display: none;
+  }
 }

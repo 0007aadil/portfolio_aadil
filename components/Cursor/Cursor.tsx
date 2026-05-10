@@ -1,29 +1,48 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import styles from "./Cursor.module.css";
 
 export default function Cursor() {
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
-  const pos = useRef({ x: 0, y: 0 });
-  const ring = useRef({ x: 0, y: 0 });
+  const pos = useRef({ x: -100, y: -100 });
+  const ring = useRef({ x: -100, y: -100 });
   const rafRef = useRef<number | null>(null);
+  const isTouch = useRef(false);
+
+  const moveCursor = useCallback((e: MouseEvent) => {
+    if (isTouch.current) return;
+    pos.current = { x: e.clientX, y: e.clientY };
+    if (dotRef.current) {
+      dotRef.current.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+    }
+  }, []);
 
   useEffect(() => {
-    const moveCursor = (e: MouseEvent) => {
-      pos.current = { x: e.clientX, y: e.clientY };
-      if (dotRef.current) {
-        dotRef.current.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-      }
-    };
+    // Detect touch device
+    const checkTouch = () => { isTouch.current = true; };
+    window.addEventListener("touchstart", checkTouch, { once: true });
 
     const animateRing = () => {
-      ring.current.x += (pos.current.x - ring.current.x) * 0.12;
-      ring.current.y += (pos.current.y - ring.current.y) * 0.12;
+      if (isTouch.current) return;
+      ring.current.x += (pos.current.x - ring.current.x) * 0.1;
+      ring.current.y += (pos.current.y - ring.current.y) * 0.1;
       if (ringRef.current) {
-        ringRef.current.style.transform = `translate(${ring.current.x}px, ${ring.current.y}px)`;
+        ringRef.current.style.transform = `translate(${ring.current.x}px, ${ring.current.y}px) translate(-50%, -50%)`;
       }
       rafRef.current = requestAnimationFrame(animateRing);
+    };
+
+    window.addEventListener("mousemove", moveCursor);
+    rafRef.current = requestAnimationFrame(animateRing);
+
+    // Hover detection with MutationObserver for dynamic content
+    const addHoverListeners = () => {
+      const interactives = document.querySelectorAll("a, button, [role='button'], [tabIndex], input, textarea");
+      interactives.forEach((el) => {
+        el.addEventListener("mouseenter", onEnterLink);
+        el.addEventListener("mouseleave", onLeaveLink);
+      });
     };
 
     const onEnterLink = () => {
@@ -35,20 +54,19 @@ export default function Cursor() {
       ringRef.current?.classList.remove(styles.hover);
     };
 
-    window.addEventListener("mousemove", moveCursor);
-    rafRef.current = requestAnimationFrame(animateRing);
+    addHoverListeners();
 
-    const links = document.querySelectorAll("a, button, [role='button'], [tabIndex]");
-    links.forEach((el) => {
-      el.addEventListener("mouseenter", onEnterLink);
-      el.addEventListener("mouseleave", onLeaveLink);
-    });
+    // Re-attach on DOM changes
+    const observer = new MutationObserver(() => addHoverListeners());
+    observer.observe(document.body, { childList: true, subtree: true });
 
     return () => {
       window.removeEventListener("mousemove", moveCursor);
+      window.removeEventListener("touchstart", checkTouch);
+      observer.disconnect();
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, []);
+  }, [moveCursor]);
 
   return (
     <>
