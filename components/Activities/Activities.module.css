@@ -1,0 +1,87 @@
+.activities {
+  background-color: var(--bg-primary);
+  border-top: 1px solid var(--border-subtle);
+  overflow: hidden;
+  padding-bottom: 80px;
+}
+
+.container {
+  margin-bottom: 60px;
+}
+
+.gallery {
+  width: 100%;
+  overflow: hidden;
+  padding: 20px 0;
+}
+
+.track {
+  display: flex;
+  gap: 32px;
+  width: max-content;
+  animation: autoScroll 40s linear infinite;
+}
+
+.track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes autoScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-50% - 16px)); }
+}
+
+.imageWrapper {
+  position: relative;
+  width: 500px;
+  height: 350px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--bg-elevated);
+}
+
+.image {
+  object-fit: cover;
+  filter: grayscale(80%) brightness(0.6);
+  transition: filter 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+}
+
+.imageWrapper:hover .image {
+  filter: grayscale(0%) brightness(1);
+  transform: scale(1.05);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,10,10,0.8) 0%, transparent 30%);
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.8s var(--ease-out-expo);
+}
+
+.imageWrapper:hover .overlay {
+  opacity: 0.3;
+}
+
+@media (max-width: 1024px) {
+  .imageWrapper {
+    width: 400px;
+    height: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .imageWrapper {
+    width: 320px;
+    height: 220px;
+  }
+  .track {
+    gap: 16px;
+  }
+  @keyframes autoScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-50% - 8px)); }
+  }
+}
